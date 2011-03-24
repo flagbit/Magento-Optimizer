@@ -1,9 +1,29 @@
 <?php
+/**
+ * Magento Optimizer
+ * 
+ * @category    Flagbit
+ * @package     Flagbit_Optimizer
+ * @copyright   Copyright (c) 2011 Flagbit GmbH & Co. KG (http://www.flagbit.de)
+ * @license     http://opensource.org/licenses/gpl-license.php GNU Public License, version 3
+ */
 
+/**
+ * Observer
+ *
+ * @author      Michael Türk <tuerk@flagbit.de>
+ * @author      Nicolai Essig <essig@flagbit.de>
+ */
 class Flagbit_Optimizer_Model_Observer {
 
     protected $_jsCache = array();
 
+    /**
+     * Callback method
+     * 
+     * @param string $matches
+     * @return int key of array
+     */
     protected function _javascriptCollector($matches){
         if(!trim($matches[2])){
             return $matches[0];
@@ -15,6 +35,12 @@ class Flagbit_Optimizer_Model_Observer {
         return $key;
     }
     
+    /**
+     * Parse HTML Output
+     * 
+     * @param object $observer
+     * @return void
+     */
     public function parseOutput($observer)
     {
         if (!Mage::getStoreConfig('dev/optimizer/remove_empty_spaces') || $observer->getBlock()->getNameInLayout() != 'root') {
@@ -27,7 +53,7 @@ class Flagbit_Optimizer_Model_Observer {
     }
     	
     /**
-     * optimize HTML Code
+     * Optimize HTML Code
      *
      * @param string $htmlCode
      * @return string

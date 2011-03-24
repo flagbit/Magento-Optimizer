@@ -1,5 +1,18 @@
 <?php
+/**
+ * Magento Optimizer
+ * 
+ * @category    Flagbit
+ * @package     Flagbit_Optimizer
+ * @copyright   Copyright (c) 2011 Flagbit GmbH & Co. KG (http://www.flagbit.de)
+ * @license     http://opensource.org/licenses/gpl-license.php GNU Public License, version 3
+ */
 
+/**
+ * Data Helper
+ *
+ * @author      Michael Türk <tuerk@flagbit.de>
+ */
 class Flagbit_Optimizer_Helper_Data extends Mage_Core_Helper_Data {
 
     /**

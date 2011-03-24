@@ -1,4 +1,18 @@
 <?php
+/**
+ * Magento Optimizer
+ * 
+ * @category    Flagbit
+ * @package     Flagbit_Optimizer
+ * @copyright   Copyright (c) 2011 Flagbit GmbH & Co. KG (http://www.flagbit.de)
+ * @license     http://opensource.org/licenses/gpl-license.php GNU Public License, version 3
+ */
+
+/**
+ * Package model
+ *
+ * @author      Nicolai Essig <essig@flagbit.de>
+ */
 class Flagbit_Optimizer_Model_Design_Package extends Mage_Core_Model_Design_Package
 {
     /**
