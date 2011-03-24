@@ -4,19 +4,6 @@ class Flagbit_Optimizer_Model_Observer {
 
     protected $_jsCache = array();
 
-    public function parseOutput($observer)
-    {
-        // @TODO: Add store configuration
-        if ($observer->getBlock()->getNameInLayout() != 'root' || false) {
-            return;
-        }
-	
-        $content = $observer->getTransport()->getHtml();
-        $content = $this->optimizeHtml($content);
-        //$content = str_replace('& ', '&amp; ', $content);
-        $observer->getTransport()->setHtml($content);
-    }
-    	
     protected function _javascriptCollector($matches){
         if(!trim($matches[2])){
             return $matches[0];
@@ -28,6 +15,18 @@ class Flagbit_Optimizer_Model_Observer {
         return $key;
     }
     
+    public function parseOutput($observer)
+    {
+        if (!Mage::getStoreConfig('dev/optimizer/remove_empty_spaces') || $observer->getBlock()->getNameInLayout() != 'root') {
+            return;
+        }
+	
+        $content = $observer->getTransport()->getHtml();
+        $content = $this->optimizeHtml($content);
+        //$content = str_replace('& ', '&amp; ', $content);
+        $observer->getTransport()->setHtml($content);
+    }
+    	
     /**
      * optimize HTML Code
      *
