@@ -23,7 +23,6 @@ class Flagbit_Optimizer_Model_Observer {
 	
         $content = $observer->getTransport()->getHtml();
         $content = $this->optimizeHtml($content);
-        //$content = str_replace('& ', '&amp; ', $content);
         $observer->getTransport()->setHtml($content);
     }
     	
@@ -37,10 +36,6 @@ class Flagbit_Optimizer_Model_Observer {
     {
         // cache and remove Javascripts
         $htmlCode = preg_replace_callback('/\<script([^\>]*)\>(.*)\<\/script\>/iUms', array(&$this, '_javascriptCollector'), $htmlCode);
-        
-        // strip Comments and leave IE Conditions
-        // $htmlCode = preg_replace("|<\!--?!\[[\s\S]*-->|iU",'',$htmlCode);
-        // not needed because TYPO3 had this allready included				
         
         // strip whitespaces
         $htmlCode = preg_replace("/(\s)+/", " ", $htmlCode);	
