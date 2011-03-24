@@ -22,20 +22,17 @@
                 </rewrite>
             </core>
         </helpers>
-        <blocks>
-            <flagbit_optimizer>
-                <class>Phoenix_Moneybookers_Block</class>
-            </flagbit_optimizer>
-        </blocks>
-        <events>
-            <core_block_abstract_to_html_after>
-                <observers>
-                    <flagbit_optimizer_observer>
-                        <class>flagbit_optimizer/observer</class>
-                        <method>parseOutput</method>
-                    </flagbit_optimizer_observer>
-                </observers>
-            </core_block_abstract_to_html_after>
-        </events>
     </global>
+	<frontend>
+		<events>
+			<core_block_abstract_to_html_after>
+				<observers>
+					<flagbit_optimizer_observer>
+						<class>flagbit_optimizer/observer</class>
+						<method>parseOutput</method>
+					</flagbit_optimizer_observer>
+				</observers>
+			</core_block_abstract_to_html_after>
+		</events>
+	</frontend>
 </config>
