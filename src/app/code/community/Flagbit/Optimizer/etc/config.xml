@@ -10,6 +10,11 @@
             <flagbit_optimizer>
                 <class>Flagbit_Optimizer_Model</class>
             </flagbit_optimizer>
+        	<core>
+        		<rewrite>
+        			<design_package>Flagbit_Optimizer_Model_Design_Package</design_package>
+        		</rewrite>
+        	</core>
         </models>
         <helpers>
             <flagbit_optimizer>
