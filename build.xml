@@ -1,0 +1,22 @@
+<project name="Magento-Optimizer" default="deploy" basedir=".">
+	
+	<property file="build.properties"/>
+	<property file="build.default.properties"/>
+
+	<property name="targetdir" value="${target.dir}"/>
+	<property name="docdir" value="${basedir}/doc"/>
+	<property name="srcdir" value="${basedir}/src"/>
+	
+	<target name="deploy">
+		<copy todir="${targetdir}" overwrite="yes" verbose="yes">
+            <fileset dir="${srcdir}">
+				<modified />
+                <include name="**/*"/>
+                <exclude name="**/.svn/**"/>
+            	<exclude name="var/log/**"/>
+				<exclude name="app/etc/local.dist.xml"/>
+			</fileset>
+		</copy>
+	</target>
+	
+</project>
