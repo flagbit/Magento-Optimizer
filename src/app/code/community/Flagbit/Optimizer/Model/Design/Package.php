@@ -48,14 +48,15 @@ class Flagbit_Optimizer_Model_Design_Package extends Mage_Core_Model_Design_Pack
         }
         
         // merge into target file
-        
-        if(version_compare('1.4.0.1',Mage::getVersion(),'>')) {
-        	echo 1;
-        }
-        
         $targetFilename = md5(implode(',', $files) . "|{$hostname}|{$port}" . md5($filetimeSum)) . '.css';
-        if ($this->_mergeFiles($files, $targetDir . DS . $targetFilename, false, array($this, 'beforeMergeCss'), 'css')) {
-            return $baseMediaUrl . $mergerDir . '/' . $targetFilename;
+        if(version_compare(Mage::getVersion(),'1.5','<')) {
+            if (Mage::helper('core')->mergeFiles($files, $targetDir . DS . $targetFilename, false, array($this, 'beforeMergeCss'), 'css')) {
+            	return $baseMediaUrl . $mergerDir . '/' . $targetFilename;
+        	}
+        } else {
+            if ($this->_mergeFiles($files, $targetDir . DS . $targetFilename, false, array($this, 'beforeMergeCss'), 'css')) {
+            	return $baseMediaUrl . $mergerDir . '/' . $targetFilename;
+        	}
         }
         return '';
     }
